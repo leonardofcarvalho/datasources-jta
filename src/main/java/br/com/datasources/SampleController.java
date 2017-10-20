@@ -51,6 +51,7 @@ public class SampleController {
 
 	@RequestMapping(value = "/addAll2")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	@Transactional
 	public void addAll2() {
 		customerRepository2.deleteAll();
 		customerRepository.deleteAll();
@@ -60,19 +61,18 @@ public class SampleController {
 
 		customerRepository2.save(new br.com.datasources.repository.customer2.Customer("Jack2", "Bauer"));
 		customerRepository2.save(new br.com.datasources.repository.customer2.Customer("Chloe2", "O'Brian"));
-		throw new RuntimeException();
-//		customerRepository2.save(new br.com.datasources.repository.customer2.Customer("Kim2", "Bauer"));
-//		customerRepository2.save(new br.com.datasources.repository.customer2.Customer("David2", "Palmer"));
-//		customerRepository2.save(new br.com.datasources.repository.customer2.Customer("Michelle2", "Dessler"));
-//
-//		customerRepository.save(new Customer("Jack", "Bauer"));
-//		customerRepository.save(new Customer("Chloe", "O'Brian"));
-//		customerRepository.save(new Customer("Kim", "Bauer"));
-//		customerRepository.save(new Customer("David", "Palmer"));
-//		customerRepository.save(new Customer("Michelle", "Dessler"));
-//
-//		System.out.println(customerRepository2.findAll().size());
-//		System.out.println(customerRepository.findAll().size());
+		customerRepository2.save(new br.com.datasources.repository.customer2.Customer("Kim2", "Bauer"));
+		customerRepository2.save(new br.com.datasources.repository.customer2.Customer("David2", "Palmer"));
+		customerRepository2.save(new br.com.datasources.repository.customer2.Customer("Michelle2", "Dessler"));
+
+		customerRepository.save(new Customer("Jack", "Bauer"));
+		customerRepository.save(new Customer("Chloe", "O'Brian"));
+		customerRepository.save(new Customer("Kim", "Bauer"));
+		customerRepository.save(new Customer("David", "Palmer"));
+		customerRepository.save(new Customer("Michelle", "Dessler"));
+
+		System.out.println(customerRepository2.findAll().size());
+		System.out.println(customerRepository.findAll().size());
 	}
 
 	@RequestMapping(value = "/listAll2", method = { RequestMethod.POST, RequestMethod.GET })
